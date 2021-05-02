@@ -1,3 +1,10 @@
+bs4
+unsync
+trio==0.16.0
+trio_asyncio==0.11.0
+
+colorama
+cython
 # Web framework requirements
 quart
 
@@ -9,3 +16,11 @@ cchardet
 # Feel free to uncomment it but it also works without it
 # Just a little less well.
 aiodns
+
+# Web framework requirements
+flask
+
+# Calling services requirements
+requests
+
+uvloop

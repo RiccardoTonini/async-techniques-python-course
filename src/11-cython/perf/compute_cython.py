@@ -22,7 +22,7 @@ def main():
     [t.start() for t in threads]
 
     [t.join() for t in threads]
-    # math_core.do_math(num=300_000)
+    math_core.do_math(num=300_000)
 
     dt = datetime.datetime.now() - t0
     print("Done in {:,.2f} sec. (factor: {:,.2f}x)".format(
@@ -31,12 +31,12 @@ def main():
     )
 
 
-# def do_math(start=0, num=10):
-#     pos = start
-#     k_sq = 1000 * 1000
-#     while pos < num:
-#         pos += 1
-#         math.sqrt((pos - k_sq) * (pos - k_sq))
+def do_math(start=0, num=10):
+    pos = start
+    k_sq = 1000 * 1000
+    while pos < num:
+        pos += 1
+        math.sqrt((pos - k_sq) * (pos - k_sq))
 
 
 if __name__ == '__main__':

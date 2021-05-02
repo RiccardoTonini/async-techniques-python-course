@@ -13,13 +13,16 @@ def main():
     print("Doing math on {:,} processors.".format(multiprocessing.cpu_count()))
 
     processor_count = multiprocessing.cpu_count()
-    threads = []
-    for n in range(1, processor_count + 1):
-        threads.append(Thread(target=do_math,
-                              args=(30_000_000 * (n - 1) / processor_count,
-                                    30_000_000 * n / processor_count),
-                              daemon=True)
-                       )
+    threads = [
+        Thread(
+            target=do_math,
+            args=(
+                30_000_000 * (n - 1) / processor_count,
+                30_000_000 * n / processor_count,
+            ),
+            daemon=True,
+        ) for n in range(1, processor_count + 1)
+    ]
 
     [t.start() for t in threads]
     [t.join() for t in threads]
@@ -37,4 +40,7 @@ def do_math(start=0, num=10):
 
 
 if __name__ == '__main__':
+    start = datetime.datetime.now()
     main()
+    dt = datetime.datetime.now() - start
+    print("Done in {:,.2f} sec.".format(dt.total_seconds()))

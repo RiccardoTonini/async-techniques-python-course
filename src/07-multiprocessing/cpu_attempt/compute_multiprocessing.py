@@ -41,4 +41,7 @@ def do_math(start=0, num=10):
 
 
 if __name__ == '__main__':
+    start = datetime.datetime.now()
     main()
+    dt = datetime.datetime.now() - start
+    print("Done in {:,.2f} sec.".format(dt.total_seconds()))
